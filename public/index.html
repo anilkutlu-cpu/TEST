@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova AI — İşletmeniz için yapay zeka çözümleri</title>
+<meta name="description" content="Tekrarlayan işleri otomatikleştirin, müşterilerinize 7/24 yanıt verin. Haftalar içinde çalışan yapay zeka çözümleri.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>✦</text></svg>">
+<style>
+  :root{
+    --bg:#0b0f1a; --card:#131a2b; --line:#222c45; --text:#e8ecf5; --muted:#93a0bd;
+    --accent:#6c8cff; --accent2:#7af0c8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:10;background:rgba(11,15,26,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+  .logo span{color:var(--accent2)}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:.95rem;color:var(--muted)}
+  nav ul a:hover{color:var(--text)}
+  .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;background:linear-gradient(135deg,var(--accent),#8e6cff);color:#fff;border:0;cursor:pointer;font-size:1rem}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+  .btn:hover{filter:brightness(1.1)}
+  .hero{padding:96px 0 72px;text-align:center;background:radial-gradient(ellipse at 50% 0,rgba(108,140,255,.18),transparent 60%)}
+  .badge{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:99px;font-size:.85rem;color:var(--accent2);margin-bottom:24px}
+  h1{font-size:clamp(2.2rem,5.5vw,3.8rem);line-height:1.1;letter-spacing:-.03em;max-width:820px;margin:0 auto 20px}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--muted);font-size:1.15rem;max-width:620px;margin:0 auto 32px}
+  .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:64px}
+  .stat{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  .stat b{display:block;font-size:2rem;color:var(--accent2)}
+  .stat span{color:var(--muted);font-size:.9rem}
+  section{padding:80px 0}
+  .eyebrow{color:var(--accent);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+  h2{font-size:clamp(1.7rem,3.5vw,2.4rem);letter-spacing:-.02em;margin-bottom:12px}
+  .sub{color:var(--muted);max-width:600px;margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .card .ico{font-size:1.8rem;margin-bottom:14px}
+  .card h3{margin-bottom:8px;font-size:1.15rem}
+  .card p{color:var(--muted);font-size:.95rem}
+  .steps{counter-reset:s}
+  .steps .card{position:relative}
+  .steps .card::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--accent);font-weight:700;margin-bottom:14px}
+  .quote p{color:var(--text);font-style:italic;margin-bottom:16px}
+  .quote small{color:var(--muted)}
+  .price .amount{font-size:2rem;font-weight:800;margin:10px 0}
+  .price ul{list-style:none;color:var(--muted);font-size:.95rem;margin:16px 0 24px}
+  .price li{padding:5px 0}
+  .price li::before{content:"✓ ";color:var(--accent2)}
+  .price.hot{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  details{border-bottom:1px solid var(--line);padding:18px 0}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--muted);margin-top:10px}
+  .contact{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;max-width:640px;margin:0 auto}
+  form{display:grid;gap:14px;margin-top:24px}
+  input,textarea,select{width:100%;padding:13px 14px;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--text);font:inherit}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);border-color:transparent}
+  footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
+  @media(max-width:720px){nav ul{display:none}.contact{padding:24px}}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 12px;font-size:1.1rem;cursor:pointer}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media(max-width:720px){
+    .menu-btn{display:block}
+    nav .btn{display:none}
+    nav ul.open{display:flex;flex-direction:column;gap:0;position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px}
+    nav ul.open a{display:block;padding:12px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Nova<span>.ai</span></a>
+    <ul>
+      <li><a href="#cozumler">Çözümler</a></li>
+      <li><a href="#surec">Süreç</a></li>
+      <li><a href="#yorumlar">Referanslar</a></li>
+      <li><a href="#paketler">Paketler</a></li>
+      <li><a href="#sss">SSS</a></li>
+    </ul>
+    <a href="#iletisim" class="btn">Ücretsiz Görüşme</a>
+    <button class="menu-btn" aria-label="Menü" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badge">● Yeni projeler için yer açıldı</div>
+    <h1>İşletmenizin tekrarlayan işlerini <em>yapay zekaya</em> devredin</h1>
+    <p>Müşteri desteği, raporlama, teklif hazırlama ve daha fazlası. Teknik ekip kurmadan, haftalar içinde çalışan çözümler.</p>
+    <div class="cta">
+      <a href="#iletisim" class="btn">30 dk. ücretsiz keşif görüşmesi</a>
+      <a href="#cozumler" class="btn ghost">Neler yapıyoruz?</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>%70</b><span>daha az manuel iş yükü</span></div>
+      <div class="stat"><b>7/24</b><span>kesintisiz müşteri yanıtı</span></div>
+      <div class="stat"><b>2-4 hf.</b><span>ortalama canlıya alma</span></div>
+      <div class="stat"><b>40+</b><span>tamamlanan proje</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="cozumler">
+  <div class="wrap">
+    <div class="eyebrow">Çözümler</div>
+    <h2>Size zaman kazandıran dört alan</h2>
+    <p class="sub">Teknolojiyi değil, iş sonucunu satıyoruz. Önce sorununuzu dinler, sonra en basit işe yarayan çözümü kurarız.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">💬</div><h3>Akıllı müşteri asistanı</h3><p>Sık sorulan soruları, sipariş takibini ve randevuları web siteniz ve WhatsApp üzerinden otomatik yanıtlar.</p></div>
+      <div class="card"><div class="ico">📄</div><h3>Doküman ve teklif otomasyonu</h3><p>Sözleşme, teklif ve rapor hazırlama süresini saatlerden dakikalara indirin.</p></div>
+      <div class="card"><div class="ico">📊</div><h3>Veri analizi ve raporlama</h3><p>Dağınık verilerinizi toplayan, özetleyen ve size her sabah net bir tablo sunan paneller.</p></div>
+      <div class="card"><div class="ico">🧠</div><h3>Şirkete özel bilgi asistanı</h3><p>Ekibiniz kendi dokümanlarınıza soru sorsun, doğru cevabı kaynağıyla birlikte alsın.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="surec" style="background:rgba(255,255,255,.015)">
+  <div class="wrap">
+    <div class="eyebrow">Süreç</div>
+    <h2>Nasıl çalışıyoruz?</h2>
+    <p class="sub">Şeffaf, kısa ve risksiz. Her adımda ne olacağını önceden bilirsiniz.</p>
+    <div class="grid steps">
+      <div class="card"><h3>Keşif</h3><p>Süreçlerinizi inceler, en çok kazandıracak 1-2 fırsatı birlikte belirleriz.</p></div>
+      <div class="card"><h3>Prototip</h3><p>İlk haftada çalışan bir örnek gösteririz. Beğenmezseniz devam etmek zorunda değilsiniz.</p></div>
+      <div class="card"><h3>Canlıya alma</h3><p>Çözümü mevcut araçlarınıza entegre eder, ekibinize kullanım eğitimi veririz.</p></div>
+      <div class="card"><h3>Destek ve gelişim</h3><p>Sonuçları ölçer, aylık olarak iyileştirir ve yeni fırsatlar öneririz.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="yorumlar">
+  <div class="wrap">
+    <div class="eyebrow">Referanslar</div>
+    <h2>Müşterilerimiz ne diyor?</h2>
+    <p class="sub">Aşağıdaki yorumlar örnek metindir; gerçek müşteri görüşleriyle değiştirin.</p>
+    <div class="grid">
+      <div class="card quote"><p>“Destek taleplerimizin yarısından fazlası artık insan müdahalesi olmadan çözülüyor.”</p><small>Ayşe K. — E-ticaret kurucusu</small></div>
+      <div class="card quote"><p>“Teklif hazırlama 3 saatten 15 dakikaya düştü. Ekip bu zamanı satışa ayırıyor.”</p><small>Mehmet T. — Danışmanlık ofisi</small></div>
+      <div class="card quote"><p>“Teknik bilgimiz yoktu, hiçbir şey anlamamıza gerek kalmadı. Sadece çalıştı.”</p><small>Elif D. — Klinik yöneticisi</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="paketler" style="background:rgba(255,255,255,.015)">
+  <div class="wrap">
+    <div class="eyebrow">Paketler</div>
+    <h2>İhtiyacınıza uygun başlangıç</h2>
+    <p class="sub">Fiyatlar örnektir. Net rakamları kendi teklifinize göre güncelleyin.</p>
+    <div class="grid">
+      <div class="card price"><h3>Başlangıç</h3><div class="amount">₺—</div><p>Tek bir süreci otomatikleştirin.</p><ul><li>1 kullanım senaryosu</li><li>2 hafta teslim</li><li>1 ay destek</li></ul><a href="#iletisim" class="btn ghost">Teklif al</a></div>
+      <div class="card price hot"><h3>Büyüme</h3><div class="amount">₺—</div><p>En çok tercih edilen paket.</p><ul><li>3 kullanım senaryosu</li><li>Mevcut araçlarla entegrasyon</li><li>Ekip eğitimi</li><li>3 ay destek</li></ul><a href="#iletisim" class="btn">Teklif al</a></div>
+      <div class="card price"><h3>Kurumsal</h3><div class="amount">Özel</div><p>Şirket geneline yayılan dönüşüm.</p><ul><li>Sınırsız senaryo</li><li>Özel entegrasyonlar</li><li>Öncelikli destek</li></ul><a href="#iletisim" class="btn ghost">Görüşelim</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="sss">
+  <div class="wrap" style="max-width:760px">
+    <div class="eyebrow">SSS</div>
+    <h2>Sık sorulan sorular</h2>
+    <details><summary>Teknik bilgim yok, yine de çalışabilir miyiz?</summary><p>Evet. Kurulumu ve bakımı biz yaparız; siz sadece sonucu kullanırsınız.</p></details>
+    <details><summary>Verilerim güvende mi?</summary><p>Verileriniz yalnızca sizin çözümünüz için kullanılır, üçüncü taraflarla paylaşılmaz ve modelleri eğitmek için kullanılmaz. KVKK uyumu için gerekli adımları birlikte planlarız.</p></details>
+    <details><summary>Sonuç ne kadar sürede görürüm?</summary><p>Çoğu projede ilk çalışan prototip bir hafta içinde hazır olur.</p></details>
+    <details><summary>Beğenmezsem ne olur?</summary><p>Prototip aşamasında memnun kalmazsanız sadece o aşamanın bedelini ödersiniz.</p></details>
+  </div>
+</section>
+
+<section id="iletisim">
+  <div class="wrap">
+    <div class="contact">
+      <div class="eyebrow">İletişim</div>
+      <h2>Ücretsiz keşif görüşmesi</h2>
+      <p class="sub" style="margin-bottom:0">Birkaç satırla durumunuzu anlatın, 24 saat içinde dönüş yapalım.</p>
+      <form id="lead">
+        <input required name="ad" placeholder="Ad Soyad">
+        <input required type="email" name="eposta" placeholder="E-posta">
+        <input name="sirket" placeholder="Şirket">
+        <select name="alan"><option>Hangi alanda yardım arıyorsunuz?</option><option>Müşteri asistanı</option><option>Doküman otomasyonu</option><option>Veri ve raporlama</option><option>Bilgi asistanı</option><option>Emin değilim</option></select>
+        <textarea name="not" rows="4" placeholder="Kısaca ihtiyacınız nedir?"></textarea>
+        <button class="btn" type="submit">Gönder</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Nova.ai — Tüm hakları saklıdır. · hello@nova.ai</div>
+</footer>
+
+<script>
+  // E-posta adresini kendi adresinizle değiştirin
+  const MAIL="hello@nova.ai";
+  document.getElementById("lead").addEventListener("submit",e=>{
+    e.preventDefault();
+    const f=Object.fromEntries(new FormData(e.target));
+    const body=`Ad: ${f.ad}\nE-posta: ${f.eposta}\nŞirket: ${f.sirket||"-"}\nAlan: ${f.alan}\n\n${f.not||""}`;
+    location.href=`mailto:${MAIL}?subject=${encodeURIComponent("Keşif görüşmesi talebi — "+f.ad)}&body=${encodeURIComponent(body)}`;
+    e.target.innerHTML='<p style="color:var(--accent2)">E-posta uygulamanız açıldı. Mesajı göndermeniz yeterli, teşekkürler!</p>';
+  });
+  document.querySelectorAll("nav ul a").forEach(a=>a.addEventListener("click",()=>document.querySelector("nav ul").classList.remove("open")));
+  document.querySelectorAll(".card,.stat,section h2,.sub").forEach(el=>el.classList.add("reveal"));
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
